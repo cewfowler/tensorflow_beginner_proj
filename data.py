@@ -1,8 +1,8 @@
 import tensorflow as tf;
 import numpy as np;
-import matplotlib.pyplot as plt;
 import os;
-import skimage
+import skimage;
+import data_exploration;
 
 def load_data(data_directory):
     directories = [dir for dir in os.listdir(data_directory)
@@ -32,32 +32,6 @@ images, labels = load_data(TRAIN_DATA_DIR);
 images = np.array(images);
 labels = np.array(labels);
 
-# Print dimensions and number of elements in 'images' + first instance
-#print(images.ndim);
-#print(images.size);
-#print(images[0]);
-
-# Print dimensions and number of elements in 'labels' + number of labels
-#print(labels.ndim);
-#print(labels.size);
-#print(len(set(labels)));
-
-# Let's make and show a histogram
-#plt.hist(labels, 62);
-#plt.show();
-
+#data_exploration.display_histogram(labels);
 traffic_signs = [300, 2250, 3650, 4000];
-
-# Fill subplots with random images we've selected
-for i in range(len(traffic_signs)):
-    plt.subplot(1, 4, i+1);
-    plt.axis('off');
-    plt.imshow(images[traffic_signs[i]]);
-    plt.subplots_adjust(wspace=0.5);
-
-    print("Image {0} - shape: {1}, min: {2}, max: {3}".format(i+1,
-                                                  images[traffic_signs[i]].shape,
-                                                  images[traffic_signs[i]].min(),
-                                                  images[traffic_signs[i]].max()));
-
-plt.show();
+data_exploration.display_images(images, traffic_signs);
