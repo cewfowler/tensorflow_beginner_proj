@@ -1,6 +1,8 @@
 import tensorflow as tf;
-import os;
 import numpy as np;
+import matplotlib.pyplot as plt;
+import os;
+import skimage
 
 def load_data(data_directory):
     directories = [dir for dir in os.listdir(data_directory)
@@ -35,4 +37,11 @@ print(images.ndim);
 print(images.size);
 
 # Print first instance of images
-images[0]
+print(images[0]);
+
+# Print dimensions and number of elements in 'images'
+print(labels.ndim);
+print(labels.size);
+
+# Count the number of labels
+print(len(set(labels)));
