@@ -1,5 +1,6 @@
 import tensorflow as tf;
 import os;
+import numpy as np;
 
 def load_data(data_directory):
     directories = [dir for dir in os.listdir(data_directory)
@@ -26,3 +27,12 @@ TRAIN_DATA_DIR = os.path.join(ROOT_PROJ_PATH, "TrafficSigns/Training");
 TEST_DATA_DIR = os.path.join(ROOT_PROJ_PATH, "TrafficSigns/Testing");
 
 images, labels = load_data(TRAIN_DATA_DIR);
+images = np.array(images);
+labels = np.array(labels);
+
+# Print dimensions and number of elements in 'images'
+print(images.ndim);
+print(images.size);
+
+# Print first instance of images
+images[0]
